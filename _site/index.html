@@ -15,6 +15,7 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
+    <link href="/css/syntax.css" rel="stylesheet">
     <link href="/css/site.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -22,6 +23,9 @@
       <script src="/js/html5shiv.js"></script>
       <script src="/js/respond.min.js"></script>
     <![endif]-->
+    
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
   </head>
 
   <body>
@@ -64,45 +68,49 @@
 </p>
 
 <h3>recent posts</h3>
-
-
-	<table class="table table-hover">
-		<tbody>
-
-
-			<tr>
-				<td><a href="/2013/10/12/my-second-post/">this is my second post</a></td>
-				<td class="text-right">12 October 2013</td>
-			</tr>
-
-
-
-
-
-
-			<tr>
-				<td><a href="/2013/10/11/first-post/">my first post</a></td>
-				<td class="text-right">11 October 2013</td>
-			</tr>
+<table class="table table-hover">
+	<tbody>
+		
+		<tr>
+			<td><a href="/2013/10/12/my-second-post/">this is my second post</a></td>
+			<td class="text-right">12 October 2013</td>
+		</tr>
+		
+		<tr>
+			<td><a href="/2013/10/11/first-post/">my first post</a></td>
+			<td class="text-right">11 October 2013</td>
+		</tr>
+		
+	</tbody>
+</table>
 
 
 
+<div class="row">
+	<div class="col-md-6">
+		<h3>
+	recent tweets
+</h3>
+	</div>
+	<div class="col-md-6 text-right follow-wrapper">
+		<a href="https://twitter.com/badthingfactory" class="twitter-follow-button" data-show-count="false" data-size="large">
+			Follow @badthingfactory
+		</a>
+	</div>
+</div>
 
+<div id="tweets"></div>
+<script src="/js/tweets.js"></script>
 
-
-		</tbody>
-	</table>
 
 <h3>pygments example:</h3>
 <div class="highlight"><pre><code class="csharp"><span class="kt">var</span> <span class="n">something</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
 </code></pre></div>
+
         </div>
         <footer>
             
         </footer>
     </div>
-
-    <script src="/js/jquery-1.10.2.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
   </body>
 </html>

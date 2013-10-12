@@ -17,24 +17,35 @@ title: Home
 </p>
 
 <h3>recent posts</h3>
+<table class="table table-hover">
+	<tbody>
+		{% for post in site.posts limit: 5 %}
+		<tr>
+			<td><a href="{{ post.url }}">{{ post.title }}</a></td>
+			<td class="text-right">{{ post.date | date_to_long_string }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
 
 
-	<table class="table table-hover">
-		<tbody>
-{% for post in site.posts limit: 5 %}
 
-			<tr>
-				<td><a href="{{ post.url }}">{{ post.title }}</a></td>
-				<td class="text-right">{{ post.date | date_to_long_string }}</td>
-			</tr>
+<div class="row">
+	<div class="col-md-6">
+		<h3>
+	recent tweets
+</h3>
+	</div>
+	<div class="col-md-6 text-right follow-wrapper">
+		<a href="https://twitter.com/badthingfactory" class="twitter-follow-button" data-show-count="false" data-size="large">
+			Follow @badthingfactory
+		</a>
+	</div>
+</div>
 
+<div id="tweets"></div>
+<script src="/js/tweets.js"></script>
 
-
-
-{% endfor %}
-
-		</tbody>
-	</table>
 
 <h3>pygments example:</h3>
 {% highlight csharp %}
