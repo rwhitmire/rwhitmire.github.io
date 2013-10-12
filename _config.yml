@@ -3,8 +3,6 @@ description: ""
 
 url: "rwhitmire.github.io"
 
-paginate: 10
-
 markdown: rdiscount
 permalink: pretty
 pygments: true
