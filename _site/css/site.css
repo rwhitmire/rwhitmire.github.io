@@ -54,12 +54,15 @@ header nav ul li a {
 	padding: 10px 20px;
 }
 
-@media (min-width: 768px) {
-	.text-right-sm {
-		text-align: right;
-	}
+header nav ul li a:hover {
+	text-decoration: none;
+}
 
-	.follow-wrapper {
-		padding-top: 14px;
-	}
+header nav .icon {
+	margin-right: 2px;
+	color: #333;
+}
+
+#about-me {
+	margin-bottom: 50px;
 }

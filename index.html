@@ -3,9 +3,11 @@ layout: default
 title: Home
 ---
 
-<h3>about me</h3>
+<h2>
+	about me
+</h2>
 
-<p>
+<p id="about-me">
 	Hi! My name is Ryan Whitmire and I'm a software developer located in Erie, Pennsylvania. I'm interested in
 	JavaScript, HTML, and CSS. If you're also interested in frustrating front-end technologies, feel free to follow me on
 
@@ -16,7 +18,10 @@ title: Home
 	<a href="http://www.github.com/rwhitmire">GitHub</a>
 </p>
 
-<h3>recent posts</h3>
+<h3>
+	<span class="icon icon-rss-sign"></span>
+	recent posts
+</h3>
 <table class="table table-hover">
 	<tbody>
 		{% for post in site.posts limit: 5 %}
@@ -28,24 +33,12 @@ title: Home
 	</tbody>
 </table>
 
-<div class="row">
-	<div class="col-sm-6">
-		<h3>
-			recent tweets
-		</h3>
-	</div>
-	<div class="col-sm-6 text-right-sm follow-wrapper">
-		<a href="https://twitter.com/badthingfactory" class="twitter-follow-button" data-show-count="false" data-size="large">
-			Follow @badthingfactory
-		</a>
-	</div>
-</div>
 
+<h3>
+	<span class="icon icon-twitter"></span>
+	<a href="http://www.twitter.com/badthingfactory" target="blank">
+		@badthingfactory
+	</a>
+</h3>
 <div id="tweets"></div>
 <script src="/js/tweets.js"></script>
-
-
-<h3>pygments example:</h3>
-{% highlight csharp %}
-var something = 0;
-{% endhighlight %}
