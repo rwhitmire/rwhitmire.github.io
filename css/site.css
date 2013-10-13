@@ -19,9 +19,9 @@ header.mobile {
 }
 
 header.desktop nav {
-	height: 100px;
 	position: fixed;
 	top: 0;
+	z-index: 1;
 }
 
 header nav ul {
@@ -58,11 +58,27 @@ header nav ul li a:hover {
 	text-decoration: none;
 }
 
-header nav .icon {
+.icon {
 	margin-right: 2px;
+}
+
+header nav .icon {
 	color: #333;
 }
 
 #about-me {
 	margin-bottom: 50px;
+}
+
+.red {
+	color: red;
+}
+
+label.error {
+	color: #b94a48;
+	margin-top:3px;
+}
+
+input.error, textarea.error, select.error {
+	border-color: #b94a48;
 }

@@ -3,4 +3,48 @@ layout: default
 title: contact
 ---
 
-coming soon...
+<div id="form-wrapper">
+	<h2>send me a message</h2>
+
+	<form action="#">
+		<div class="row">
+			<div class="col-md-5">
+				<div class="form-group">
+					<label for="name">Name</label>
+					<input class="form-control" type="text" id="name" name="name" required />
+				</div>
+
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input class="form-control" type="email" id="email" name="email" required>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="message">Message</label>
+			<textarea class="form-control" name="message" id="message" cols="30" rows="10" required></textarea>
+		</div>
+
+		<div class="form-group">
+			<button class="btn btn-success" data-loading-text="Sending Message...">
+				<span class="icon icon-envelope"></span>
+				Send Message
+			</button>
+		</div>
+	</form>
+</div>
+
+<div id="fail-message" class="alert alert-danger hidden">
+	<span class="icon icon-warning-sign"></span>
+	I'm sorry. My contact form appears to be broken. If you still want to contact me, you can reach me
+	by email at ryanw51 [at] gmail.com.
+</div>
+
+<div id="success-message" class="alert alert-success hidden">
+	<span class="icon icon-heart red"></span>
+	Thanks! Your message will be appearing in my email shortly.
+</div>
+
+<script src="/js/jquery.validate.min.js"></script>
+<script src="/js/contact.js"></script>
