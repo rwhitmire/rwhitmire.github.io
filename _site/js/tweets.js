@@ -58,4 +58,8 @@ $(function(){
 
     	$wrapper.append($table);
     });
+
+    xhr.fail(function(){
+        console.log('twitter load failed.');
+    });
 });
