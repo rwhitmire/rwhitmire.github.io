@@ -3,10 +3,14 @@ $(function(){
 
     var xhr = $.ajax({
     	url: url,
-        crossDomain: true
+        crossDomain: true,
+        dataType: 'text'
     });
 
     xhr.done(function(tweets){
+        tweets = JSON.parse(tweets);
+        console.log(tweets);
+
     	var $wrapper = $('#tweets');
     	var $table = $('<table>').addClass('table');
     	var $tr;
