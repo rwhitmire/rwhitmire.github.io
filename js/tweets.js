@@ -1,10 +1,15 @@
 $(function(){
+    $.support.cors = true;
+
     var url = 'http://rwhitmire.azurewebsites.net/api/twitter';
 
     var xhr = $.ajax({
+        type: 'get',
     	url: url,
         crossDomain: true,
-        dataType: 'text'
+        dataType: 'text',
+        async: true,
+        cache: false
     });
 
     xhr.done(function(tweets){
