@@ -42,7 +42,7 @@ $(function(){
 
 
     		day = date.getDate();
-			month = monthLookup[date.getMonth() + 1];
+			month = monthLookup[date.getMonth().toString() + 1];
 			year = date.getFullYear();
 
 			dateStr = day + ' ' + month + ' ' + year;
