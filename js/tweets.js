@@ -5,7 +5,8 @@ $(function(){
 
     var xhr = $.ajax({
     	url: url,
-        crossDomain: true
+        crossDomain: true,
+        dataType: 'jsonp'
     });
 
     xhr.done(function(tweets){
