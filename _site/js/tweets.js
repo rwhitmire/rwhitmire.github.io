@@ -1,4 +1,6 @@
 $(function(){
+    $.support.cors = true;
+
     var url = 'http://rwhitmire.azurewebsites.net/api/twitter';
 
     var xhr = $.ajax({
