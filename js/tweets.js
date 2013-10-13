@@ -4,9 +4,12 @@ $(function(){
     var url = 'http://rwhitmire.azurewebsites.net/api/twitter';
 
     var xhr = $.ajax({
+        type: 'get',
     	url: url,
         crossDomain: true,
-        dataType: 'jsonp'
+        dataType: 'jsonp',
+        async: true,
+        cache: false
     });
 
     xhr.done(function(tweets){
