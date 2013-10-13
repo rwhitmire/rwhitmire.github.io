@@ -30,8 +30,6 @@ $(function(){
     		12: 'December'
     	}
 
-    	console.log(tweets);
-
     	$.each(tweets, function(index, tweet){
     		$tr = $('<tr>');
     		$col1 = $('<td>');
