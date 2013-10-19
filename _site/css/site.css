@@ -82,3 +82,20 @@ label.error {
 input.error, textarea.error, select.error {
 	border-color: #b94a48;
 }
+
+#old-ie-cover {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	background: white;
+	z-index: 9999;
+}
+
+#old-ie-cover .message {
+	width: 800px;
+	margin: 0 auto;
+	margin-top: 50px;
+}

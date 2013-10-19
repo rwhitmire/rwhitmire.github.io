@@ -52,18 +52,15 @@ $(function(){
 
 
     		day = date.getDate();
-			month = monthLookup[date.getMonth().toString() + 1];
+			month = monthLookup[date.getMonth() + 1];
 			year = date.getFullYear();
 
 			dateStr = day + ' ' + month + ' ' + year;
 
     		$col1.html(text);
     		$col2.html(dateStr);
-
-    		$tr .append($col1)
-    			.append($col2);
-
-			$table.append($tr);
+    		$tr.append($col1).append($col2);
+		$table.append($tr);
     	});
 
     	$wrapper.append($table);
