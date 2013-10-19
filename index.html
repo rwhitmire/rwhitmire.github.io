@@ -27,7 +27,7 @@ title: Home
 		{% for post in site.posts limit: 5 %}
 		<tr>
 			<td><a href="{{ post.url }}">{{ post.title }}</a></td>
-			<td class="text-right">{{ post.date | date_to_long_string }}</td>
+			<td class="text-right date-col">{{ post.date | date_to_long_string }}</td>
 		</tr>
 		{% endfor %}
 	</tbody>

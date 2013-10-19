@@ -43,7 +43,7 @@ $(function(){
     	$.each(tweets, function(index, tweet){
     		$tr = $('<tr>');
     		$col1 = $('<td>');
-    		$col2 = $('<td>').addClass('text-right');
+    		$col2 = $('<td>').addClass('text-right').addClass('date-col');
 
     		console.log(tweet);
 
