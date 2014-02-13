@@ -39,5 +39,23 @@ title: Home
 		@badthingfactory
 	</a>
 </h3>
-<div id="tweets"></div>
-<script src="/js/tweets.js"></script>
+
+<!-- <div id="tweets"></div> -->
+
+
+<div id="tweets">
+	<table class="table">
+		<tbody data-bind="foreach: tweets">
+			<tr>
+				<td data-bind="text: text"></td>
+				<td class="text-right date-col" data-bind="text: $root.getDate(created_at)"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+
+
+
+<script src="/js/index.js"></script>
