@@ -18,7 +18,7 @@ I started brainstorming and thinking about how I might be able to pull this off.
 ### Assumptions
 
 - you have Raspbian installed on your Pi
-- you have SSH access to your Pi
+- you have terminal access to your Pi
 - you have a tablet that can either be USB tethered, or rooted
 
 ### List of ingredients to have this awesome setup:
