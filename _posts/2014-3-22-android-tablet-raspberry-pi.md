@@ -13,7 +13,7 @@ While I could write entire books about any of these experiences, I'll be talking
 
 Yesterday, I spent about 2 hours searching the internet for a small portable TV. I wanted something high def and with an HDMI input. As it turns out, there is either a huge hole in the market, or I'm the only person looking for this kind of device. As I was looking for something with a 7" screen, it occurred to me that I have a very capable Nexus 7 tablet.
 
-I started brainstorming and thinking about how I might be able to pull this off. I already knew I could connect over SSH or VNC through my local network. The problem with this approach is that I might not have a network while I'm on the go. I went to CodeMash in January, and wanted to hack on my Pi so badly, but I didn't have a device with HDMI, or a big USB keyboard with me. If only I knew I could have used my little tablet and Nexus 7. Here's what I should have done before heading off to CodeMash.
+I started brainstorming and thinking about how I might be able to pull this off. I already knew I could connect over SSH or VNC through my local network. The problem with this approach is that I might not have a network while I'm on the go. I went to CodeMash in January, and wanted to hack on my Pi so badly, but I didn't have a device with HDMI, or a USB keyboard with me. If only I knew I could have used my little tablet and Logitech bluetooth keyboard. Here's what I should have done before heading off to CodeMash.
 
 ### Assumptions
 
@@ -30,11 +30,9 @@ I started brainstorming and thinking about how I might be able to pull this off.
 
 ### How they connect:
 
-This is my favorite part of this approach. Sometimes working on the Pi is a pain because you have cables and devices all over the place. My typical setup usually includes keyboard, ethernet cable, hdmi cable, power cable, and sometimes a mouse. That's just too much stuff. Here's what my setup looks like now:
+This is my favorite part of this approach. Sometimes working on the Pi is a pain because you have cables and devices all over the place. When I initially set up a Raspberry Pi, I need keyboard, ethernet cable, hdmi cable, power cable, mouse, 46" TV with HDMI input and my girlfriend can't watch TV. Here's what my setup looks like now:
 
-power outlet - usb cable - raspberry pi - usb cable - nexus 7 - bluetooth keyboard
-
-SIMPLE!
+power outlet - usb cable - raspberry pi - usb cable - nexus 7 - bluetooth keyboard - (happy girlfriend watching TV)
 
 ### Configuring your Pi
 
@@ -65,3 +63,7 @@ Enabling tethering will give your Pi an IP address and your tablet will now have
 For my VNC connection, I use VNC Viewer.
 
 ### Helpful Scripts
+
+### Credits
+
+I wish I could tell you I came up with all of this stuff on my own, but I didn't, so here are the people who deserve credit.
