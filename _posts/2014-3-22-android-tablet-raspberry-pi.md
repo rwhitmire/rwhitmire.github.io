@@ -34,6 +34,8 @@ This is my favorite part of this approach. Sometimes working on the Pi is a pain
 
 power outlet - usb cable - raspberry pi - usb cable - nexus 7 - bluetooth keyboard - (happy girlfriend watching TV)
 
+Another neat thing about this approach is that while you're tethering via USB, my tablet is also pulling some charge through the connection. The amount of power left over to charge the device is minimal, but The tablet's battery will last quite a bit longer this way.
+
 ### Configuring your Pi
 
 First, you're going to want to set up a static IP address for your usb connection.
@@ -67,3 +69,7 @@ For my VNC connection, I use VNC Viewer.
 ### Credits
 
 I wish I could tell you I came up with all of this stuff on my own, but I didn't, so here are the people who deserve credit.
+
+## Final Thoughts
+
+If you like computers, and you don't have a Raspberry Pi, GO BUY ONE. It's hard to have buyer's remorse over a $40 computer that fits in the palm of your hand.
