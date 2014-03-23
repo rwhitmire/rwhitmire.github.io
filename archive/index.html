@@ -1,0 +1,13 @@
+---
+layout: default
+title: about
+---
+
+<div class="archive">
+  {% for post in site.posts reverse %}
+  {% if post.layout == 'post' %}
+    {% include archive_post.html %}
+  {% endif %}
+  {% endfor %}
+</ul>
+</div>

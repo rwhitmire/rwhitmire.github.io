@@ -8,7 +8,7 @@
     <meta name="author" content="Ryan Whitmire">
     <link rel="shortcut icon" href="favicon.png">
     <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Share+Tech' rel='stylesheet' type='text/css'>
 
     <title>about</title>
 
@@ -27,95 +27,107 @@
     <![endif]-->
 
     <script src="/js/vendor/jquery-1.11.0.min.js"></script>
-    <script src="/js/vendor/knockout-3.0.0.js"></script>
     <script src="/js/vendor/bootstrap.min.js"></script>
 </head>
 
 <body>
     <div class="container">
-        <div class="pad-top hidden-xs"></div>
-        <header class="desktop hidden-xs">
-            <nav>
-                <ul>
-                    <li>
-                        <a href="/">
-                            <span class="icon icon-home"></span>
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/projects">
-                            <span class="icon icon-folder-open"></span>
-                            Projects
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/archive">
-                            <span class="icon icon-archive"></span>
-                            Archive
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/contact">
-                            <span class="icon icon-envelope-alt"></span>
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-
-        <header class="mobile visible-xs">
-            <nav>
-                <ul>
-                    <li>
-                        <a href="/">
-                            <span class="icon icon-home"></span>
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://www.github.com/rwhitmire" target="_blank">
-                            <span class="icon icon-folder-open"></span>
-                            Projects
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/archive">
-                            <span class="icon icon-archive"></span>
-                            Archive
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/contact">
-                            <span class="icon icon-envelope-alt"></span>
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-
+        <div class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="/archive"><i class="fa fa-folder-o"></i> Blog Archive</a></li>
+                        <li><a href="http://github.com/rwhitmire" target="_blank"><i class="fa fa-github-alt"></i> Projects</a></li>
+                        <li><a href="/contact"><i class="fa fa-envelope-o"></i> Contact</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div><!--/.container-fluid -->
+        </div>
         <div class="content">
-            coming soon...
+            <div class="archive">
+  
+  
+    
+
+
+  
+  
+  <h2 class="year">2014</h2>
+  <ul>
+
+  <li>
+    <h3 class="title"><a href="/2014/03/25/test4/">test post</a></h3>
+  </li>
+  
+  
+  
+    
+
+
+  <li>
+    <h3 class="title"><a href="/2014/03/24/test3/">test post</a></h3>
+  </li>
+  
+  
+  
+    
+
+
+  <li>
+    <h3 class="title"><a href="/2014/03/23/test2/">test post</a></h3>
+  </li>
+  
+  
+  
+    
+
+
+  <li>
+    <h3 class="title"><a href="/2014/03/23/test/">test post</a></h3>
+  </li>
+  
+  
+  
+    
+
+
+  
+  
+    </ul>
+  
+  <h2 class="year">2013</h2>
+  <ul>
+
+  <li>
+    <h3 class="title"><a href="/2013/12/10/television-for-cheap/">Television for Cheap</a></h3>
+  </li>
+  
+  
+  
+    
+
+
+  <li>
+    <h3 class="title"><a href="/2013/10/19/send-messages-between-controllers-angular/">Sending Messages Between Controllers in Angular.js</a></h3>
+  </li>
+  
+  
+</ul>
+</div>
         </div>
         <footer>
-            
+            Copyright &copy; 2014 - Ryan Whitmire
         </footer>
     </div>
-
-    <!--[if lte IE 9]>
-    <div id="old-ie-cover">
-        <div class="message">
-            <h3>Please update to a modern browser</h3>
-            <p>
-                While I can support outdated browsers, I choose not to do so. I support web standards and
-                am doing my part to spread the word. For more information please visit <a href="http://whatbrowser.org/">whatbrowser.org</a>.
-            </p>
-        </div>
-    </div>
-    <![endif]-->
-
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

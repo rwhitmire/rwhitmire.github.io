@@ -8,7 +8,7 @@
     <meta name="author" content="Ryan Whitmire">
     <link rel="shortcut icon" href="favicon.png">
     <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Share+Tech' rel='stylesheet' type='text/css'>
 
     <title>Home</title>
 
@@ -27,156 +27,185 @@
     <![endif]-->
 
     <script src="/js/vendor/jquery-1.11.0.min.js"></script>
-    <script src="/js/vendor/knockout-3.0.0.js"></script>
     <script src="/js/vendor/bootstrap.min.js"></script>
 </head>
 
 <body>
     <div class="container">
-        <div class="pad-top hidden-xs"></div>
-        <header class="desktop hidden-xs">
-            <nav>
-                <ul>
-                    <li>
-                        <a href="/">
-                            <span class="icon icon-home"></span>
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/projects">
-                            <span class="icon icon-folder-open"></span>
-                            Projects
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/archive">
-                            <span class="icon icon-archive"></span>
-                            Archive
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/contact">
-                            <span class="icon icon-envelope-alt"></span>
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-
-        <header class="mobile visible-xs">
-            <nav>
-                <ul>
-                    <li>
-                        <a href="/">
-                            <span class="icon icon-home"></span>
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://www.github.com/rwhitmire" target="_blank">
-                            <span class="icon icon-folder-open"></span>
-                            Projects
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/archive">
-                            <span class="icon icon-archive"></span>
-                            Archive
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/contact">
-                            <span class="icon icon-envelope-alt"></span>
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-
+        <div class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="/archive"><i class="fa fa-folder-o"></i> Blog Archive</a></li>
+                        <li><a href="http://github.com/rwhitmire" target="_blank"><i class="fa fa-github-alt"></i> Projects</a></li>
+                        <li><a href="/contact"><i class="fa fa-envelope-o"></i> Contact</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div><!--/.container-fluid -->
+        </div>
         <div class="content">
-            <h2>
-	about me
-</h2>
+            
+<div itemscope itemtype="http://schema.org/Blog">
 
-<p id="about-me">
-	Hi! My name is Ryan Whitmire and I'm a software developer located in Erie, Pennsylvania. I'm interested in
-	JavaScript, HTML, and CSS. If you're also interested in frustrating front-end technologies, feel free to follow me on
 
-	<a href="http://twitter.com/badthingfactory">Twitter</a>
 
-	or
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+        
+	<article>
+		<div class="header"><h1><a href="/2014/03/25/test4/">test post</a></h1></div>
+		<div class="content"><p>TEST</p>
+</div>
+	</article>
 
-	<a href="http://www.github.com/rwhitmire">GitHub</a>
+
+    </article>
+    <hr>
+
+
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+        
+	<article>
+		<div class="header"><h1><a href="/2014/03/24/test3/">test post</a></h1></div>
+		<div class="content"><p>TEST</p>
+</div>
+	</article>
+
+
+    </article>
+    <hr>
+
+
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+        
+	<article>
+		<div class="header"><h1><a href="/2014/03/23/test2/">test post</a></h1></div>
+		<div class="content"><p>TEST</p>
+</div>
+	</article>
+
+
+    </article>
+    <hr>
+
+
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+        
+	<article>
+		<div class="header"><h1><a href="/2014/03/23/test/">test post</a></h1></div>
+		<div class="content"><p>TEST</p>
+</div>
+	</article>
+
+
+    </article>
+    <hr>
+
+
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+        
+	<article>
+		<div class="header"><h1><a href="/2013/12/10/television-for-cheap/">Television for Cheap</a></h1></div>
+		<div class="content"><p>
+    I, like most, have been searching for a cheap way to watch all of the television I want for nearly a decade now.
+    Technology is making this more possible than ever, but no matter what you do, it's still difficult to keep
+    your monthly payments low without making any compromises.
 </p>
 
-<h3>
-	<span class="icon icon-rss-sign"></span>
-	recent posts
-</h3>
-<table class="table table-hover">
-	<tbody>
-		
-		<tr>
-			<td><a href="/2013/12/10/television-for-cheap/">Television for Cheap</a></td>
-			<td class="text-right date-col">10 December 2013</td>
-		</tr>
-		
-		<tr>
-			<td><a href="/2013/10/19/send-messages-between-controllers-angular/">Sending Messages Between Controllers in Angular.js</a></td>
-			<td class="text-right date-col">19 October 2013</td>
-		</tr>
-		
-	</tbody>
-</table>
+<h3>Chosing a Provider</h3>
 
-<h3>
-	<span class="icon icon-twitter"></span>
-	<a href="http://www.twitter.com/badthingfactory" target="blank">
-		@badthingfactory
-	</a>
-</h3>
+<p>
+    The first thing you'll want to do is decide on a Cable or Satellite Dish provider. I went with DirecTV a few
+    years ago. They have pretty decent customer service and for a sports fan like myself, they were the best
+    value at the time. Dish has made some nice moves over the past year or two, but being a football fan, I really
+    wanted NFL Sunday Ticket.
+</p>
 
-<!-- <div id="tweets"></div> -->
+<h3>Technology!</h3>
+
+<p>
+    Do not buy a separate receiver for each room of your house. I'll speak about why in the next two paragraphs. I have
+    three rooms I frequently want to watch T.V. in, but I don't want the added monthly charges.
+</p>
+
+<p>
+    The second thing you'll want to do is invest in a <a href="http://www.slingbox.com/" target="_blank">SlingBox</a>.
+    For under $200, you'll be able to watch your television from anywhere in the world provided you have
+    an internet connection. You might be wondering how this can save you money. I'll tell you in a minute.
+</p>
+
+<img src="/assets/images/slingbox_plus_roku.jpg" alt="Roku Player">
+
+<p>
+    Buy a <a href="http://www.roku.com/" target="_blank">Roku player</a> for each additional room you want to watch television in. 
+    Roku has a SlingPlayer app
+    that will act as a client. My extra televisions are in the 30-40 inch range so the basic 720p model is fine for me. 
+    Now you can watch T.V. in another room without a second receiver or cable box.
+    The Roku SlingPlayer app will allow you to use your iPhone or Android device to change the channel. If you don't have a
+    smart phone, an iPod touch or Nexus 7 should work just fine.
+</p>
+
+<p>
+    Note that only one device can be logged into SlingBox at a time, so watching television in three rooms at
+    once won't be an option.
+</p>
+
+<h3>Negotiate</h3>
+
+<p>
+    When my DirecTV contract expired, my bill shot up by about $20 per month. This was far more than I was
+    willing to pay for television. I called and told customer service I wanted to cancel. The first person I spoke
+    with attempted to convince me to switch to a cheaper package. Not an option - I needed the sports channels. After
+    telling him I still wanted to cancel, he elevated my call.
+</p>
+
+<img src="/assets/images/googly-eyed-money.jpg" alt="money">
+
+<p>
+    The next person I spoke with asked me how much I wanted to pay. I said "umm $30 per month would be nice." He put me
+    on hold for a few minutes and came back with an offer of around $40 per month (this is with Sunday Ticket included
+    which is around $60 per month alone on a payment plan). I hesitated for a few seconds, and just before I said "ok",
+    the kind man threw in a $150 credit. These companies are very interested in keeping your business. Threatening to
+    leave will keep them honest.
+</p></div>
+	</article>
 
 
-<div id="tweets">
-	<table class="table">
-		<tbody data-bind="foreach: tweets">
-			<tr>
-				<td data-bind="text: text"></td>
-				<td class="text-right date-col" data-bind="text: $root.getDate(created_at)"></td>
-			</tr>
-		</tbody>
-	</table>
+    </article>
+    <hr>
+
+
 </div>
+<nav id="page-nav">
+    
+    
+        <a href="/blog/page2" class="next"><i class="fa fa-arrow-circle-o-right"></i></i> Next</a>
+    
+    <div class="text-center"><a href="/archive"><i class="fa fa-folder-o"></i> Blog Archive</a></div>
+</nav>
 
-
-
-
-
-<script src="/js/index.js"></script>
-
+<hr>
         </div>
         <footer>
-            
+            Copyright &copy; 2014 - Ryan Whitmire
         </footer>
     </div>
-
-    <!--[if lte IE 9]>
-    <div id="old-ie-cover">
-        <div class="message">
-            <h3>Please update to a modern browser</h3>
-            <p>
-                While I can support outdated browsers, I choose not to do so. I support web standards and
-                am doing my part to spread the word. For more information please visit <a href="http://whatbrowser.org/">whatbrowser.org</a>.
-            </p>
-        </div>
-    </div>
-    <![endif]-->
-
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

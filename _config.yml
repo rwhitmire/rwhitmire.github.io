@@ -6,3 +6,6 @@ url: "rwhitmire.github.io"
 markdown: rdiscount
 permalink: pretty
 pygments: true
+
+paginate: 5
+paginate_path: "blog/page:num"

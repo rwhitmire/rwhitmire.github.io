@@ -2,18 +2,4 @@
 layout: default
 ---
 
-<article>
-	<div class="header">
-		<h2>
-			{{page.title}}
-		</h2>
-	</div>
-
-	<div class="content">
-		{{content}}
-	</div>
-
-	<div class="comments">
-		{% include disqus.html %}
-	</div>
-</article>
+{% include article.html %}
