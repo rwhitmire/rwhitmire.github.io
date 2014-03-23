@@ -1,4 +1,7 @@
-# Using an Android Tablet as a Raspberry Pi Monitor
+---
+layout: post
+title: Using an Android Tablet as a Raspberry Pi Monitor
+---
 
 Over the past few months I've been addicted to the combined simplicity and awesomeness of the Raspberry Pi. When my mom got me one of these for Christmas, I thought it would be something that sat around and collected dust. However, I constantly find myself doing productive, fun things with the Pi. To date here is a list of things I've accomplished with my small $40 computer
 
@@ -14,6 +17,8 @@ While I could write entire books about any of these experiences, I'll be talking
 Yesterday, I spent about 2 hours searching the internet for a small portable TV. I wanted something high def and with an HDMI input. As it turns out, there is either a huge hole in the market, or I'm the only person looking for this kind of device. As I was looking for something with a 7" screen, it occurred to me that I have a very capable Nexus 7 tablet.
 
 I started brainstorming and thinking about how I might be able to pull this off. I already knew I could connect over SSH or VNC through my local network. The problem with this approach is that I might not have a network while I'm on the go. I went to CodeMash in January, and wanted to hack on my Pi so badly, but I didn't have a device with HDMI, or a USB keyboard with me. If only I knew I could have used my little tablet and Logitech bluetooth keyboard. Here's what I should have done before heading off to CodeMash.
+
+![Nexus 7 Monitor](/images/android-tablet-raspberry-pi/raspberry-nexus.jpg)
 
 ### Assumptions
 
@@ -45,14 +50,27 @@ First, you're going to want to set up a static IP address for your usb connectio
 Append the following lines to the end of the file
 
 ```
-CODE HERE
+iface usb0 inet static
+address 192.168.42.42
+netmask 255.255.255.0
+network 192.168.42.0
+broadcast 192.168.42.255
 ```
 
 Next, install your VNC Server (or move on if you don't care about the GUI)
 
 ```
-CODE HERE
+sudo apt-get install tightvncserver
+tightvncserver
+vncserver :0 -geometry 1280x800
 ```
+
+If you ever want to kill the VNC server
+
+```
+vncserver -kill :0
+```
+NOTE: VNC Server will need to be restarted if you power down the Pi. There are ways to start the server at startup, but I won't cover that here.
 
 ### Configuring your Android Tablet
 
@@ -60,9 +78,12 @@ This was the biggest challenge I had to overcome. If you have Android 4.4, Googl
 
 Once I had Cyanogenmod installed, the following option showed up in my settings.
 
-Enabling tethering will give your Pi an IP address and your tablet will now have SSH and VNC access. Now you just need some apps. For SSH, I use VX ConnectBot. Using this app with a bluetooth keyboard is pretty close to the same experience you would have if you were hacking right on the Pi.
+![Android Menu](/images/android-tablet-raspberry-pi/tablet-menu.jpg)
 
-For my VNC connection, I use VNC Viewer.
+
+Enabling tethering will give your Pi an IP address and your tablet will now have SSH and VNC access. Now you just need some apps. For SSH, I use [VX ConnectBot](https://play.google.com/store/apps/details?id=sk.vx.connectbot). Using this app with a bluetooth keyboard is pretty close to the same experience you would have if you were hacking right on the Pi.
+
+For my VNC connection, I use [VNC Viewer](https://play.google.com/store/apps/details?id=com.realvnc.viewer.android).
 
 ### Helpful Scripts
 

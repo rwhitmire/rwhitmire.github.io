@@ -132,3 +132,7 @@ article .content {
 .date-col {
 	width: 180px;
 }
+
+img {
+	max-width: 100%;
+}

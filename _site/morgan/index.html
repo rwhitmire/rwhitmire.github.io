@@ -1,128 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-    <meta name="description" content="Ryan's technology space">
-    <meta name="author" content="Ryan Whitmire">
-    <link rel="shortcut icon" href="favicon.png">
-    <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<!DOCTYPE HTML>
+<!--
+    Prologue 1.2 by HTML5 UP
+    html5up.net | @n33co
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+    <head>
+        <title>for morgan</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600" rel="stylesheet" type="text/css" />
+        <!--[if lte IE 8]><script src="/js/html5shiv.js"></script><![endif]-->
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/skel.min.js"></script>
+        <script src="/js/skel-panels.min.js"></script>
+        <script src="/js/init.js"></script>
+        <noscript>
+            <link rel="stylesheet" href="/css/skel-noscript.css" />
+            <link rel="stylesheet" href="/css/style.css" />
+            <link rel="stylesheet" href="/css/style-wide.css" />
+        </noscript>
+        <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+    </head>
+    <body>
 
-    <title>for morgan</title>
+        <!-- Header -->
+            <div id="header" class="skel-panels-fixed">
 
-    <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+                <div class="top">
 
-    <!-- Custom styles for this template -->
-    <link href="/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/css/syntax.css" rel="stylesheet">
-    <link href="/css/site.css" rel="stylesheet">
+                    <!-- Logo -->
+                        <div id="logo">
+                            <span class="image avatar48"><img src="http://gravatar.com/userimage/14191330/695f8cef7362c173fd2d15c0a979f572.jpg?s=48" alt="" /></span>
+                            <h1 id="title">Ryan Whitmire</h1>
+                            <span class="byline">Software Developer</span>
+                        </div>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="/js/vendor/html5shiv.js"></script>
-    <script src="/js/vendor/respond.min.js"></script>
-    <![endif]-->
+                    <!-- Nav -->
+                        <nav id="nav">
+                            <!--
+                            
+                                Prologue's nav expects links in one of two formats:
+                                
+                                1. Hash link (scrolls to a different section within the page)
+                                
+                                   <li><a href="#foobar" id="foobar-link" class="skel-panels-ignoreHref"><span class="fa fa-whatever-icon-you-want">Foobar</span></a></li>
 
-    <script src="/js/vendor/jquery-1.11.0.min.js"></script>
-    <script src="/js/vendor/knockout-3.0.0.js"></script>
-    <script src="/js/vendor/bootstrap.min.js"></script>
-</head>
+                                2. Standard link (sends the user to another page/site)
 
-<body>
-    <div class="container">
-        <div class="pad-top hidden-xs"></div>
-        <header class="desktop hidden-xs">
-            <nav>
-                <ul>
-                    <li>
-                        <a href="/">
-                            <span class="icon icon-home"></span>
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/projects">
-                            <span class="icon icon-folder-open"></span>
-                            Projects
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/archive">
-                            <span class="icon icon-archive"></span>
-                            Archive
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/contact">
-                            <span class="icon icon-envelope-alt"></span>
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+                                   <li><a href="http://foobar.tld"><span class="fa fa-whatever-icon-you-want">Foobar</span></a></li>
+                            
+                            -->
+                            <ul>
+                                <li><a href="#top" id="top-link" class="skel-panels-ignoreHref"><span class="fa fa-home">Intro</span></a></li>
+                                <li><a href="#blog" id="blog-link" class="skel-panels-ignoreHref"><span class="fa fa-th">Blog</span></a></li>
+                                <li><a href="#about" id="about-link" class="skel-panels-ignoreHref"><span class="fa fa-user">About Me</span></a></li>
+                                <li><a href="#contact" id="contact-link" class="skel-panels-ignoreHref"><span class="fa fa-envelope">Contact</span></a></li>
+                            </ul>
+                        </nav>
+                        
+                </div>
+                
+                <div class="bottom">
 
-        <header class="mobile visible-xs">
-            <nav>
-                <ul>
-                    <li>
-                        <a href="/">
-                            <span class="icon icon-home"></span>
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://www.github.com/rwhitmire" target="_blank">
-                            <span class="icon icon-folder-open"></span>
-                            Projects
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/archive">
-                            <span class="icon icon-archive"></span>
-                            Archive
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/contact">
-                            <span class="icon icon-envelope-alt"></span>
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+                    <!-- Social Icons -->
+                        <ul class="icons">
+                            <li><a href="#" class="fa fa-twitter solo"><span>Twitter</span></a></li>
+                            <li><a href="#" class="fa fa-github solo"><span>Github</span></a></li>
+                            <li><a href="#" class="fa fa-envelope solo"><span>Email</span></a></li>
+                        </ul>
+                
+                </div>
+            
+            </div>
 
-        <div class="content">
-            <p>
+        <!-- Main -->
+            <div id="main">
+                <p>
 	love you :)
 </p>
 
 <div>
 	<img src="http://goodlittlekitty.files.wordpress.com/2011/06/6a00d83452795369e200e550618b8c8834-500wi.jpg" alt="pug">
 </div>
-        </div>
-        <footer>
+            </div>
+
+        <!-- Footer -->
+        <div id="footer">
             
-        </footer>
-    </div>
-
-    <!--[if lte IE 9]>
-    <div id="old-ie-cover">
-        <div class="message">
-            <h3>Please update to a modern browser</h3>
-            <p>
-                While I can support outdated browsers, I choose not to do so. I support web standards and
-                am doing my part to spread the word. For more information please visit <a href="http://whatbrowser.org/">whatbrowser.org</a>.
-            </p>
+            <!-- Copyright -->
+                <div class="copyright">
+                    <p>&copy; 2014 Ryan Whitmire. All rights reserved.</p>
+                    <ul class="menu">
+                        <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                    </ul>
+                </div>
+            
         </div>
-    </div>
-    <![endif]-->
 
-    <script>
+        <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -132,5 +110,6 @@
   ga('send', 'pageview');
 </script>
 
-</body>
+
+    </body>
 </html>
