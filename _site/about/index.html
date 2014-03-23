@@ -10,7 +10,7 @@
     <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Share+Tech' rel='stylesheet' type='text/css'>
 
-    <title>{{page.title}}</title>
+    <title>About Me</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -54,12 +54,38 @@
             </div><!--/.container-fluid -->
         </div>
         <div class="content">
-            {{content}}
+            <div class="about-me">
+	<h2>Who I Am</h2>
+	<p>
+		My name is Ryan Whitmire and I live in Erie, Pennsylvania. I graduated from Edinboro University of Pennsylvania and currently
+		work as a software developer at Erie Insurance Group. I built my first website when I was 12 years old and have loved
+		web development ever since.
+	</p>
+
+	<h2>Things I Do</h2>
+	<p>
+		I've been primarily working with ASP.NET MVC for the majority of my career. 
+	</p>
+
+	<h2>Things I Like</h2>
+	<p>
+		I love javascript. I take any chance I can get to write code in javascript whether I'm working with the server or the client. Naturally, I'm drawn to Node.js and spend a lot of free time learning how to build things with it. When I'm not writing javascript code, I'm probably playing around with a Raspberry Pi computer.
+	</p>
+</div>
         </div>
         <footer>
-            Copyright &copy; {{ site.time | date: '%Y' }} - Ryan Whitmire
+            Copyright &copy; 2014 - Ryan Whitmire
         </footer>
     </div>
-    {% include analytics.html %}
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-44983727-1', 'rwhitmire.com');
+  ga('send', 'pageview');
+</script>
+
 </body>
 </html>
