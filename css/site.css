@@ -3,8 +3,8 @@ body {
 	margin: 0;
 	background: #030a29;
 	font-family: "Share Tech", sans-serif;
-	color: #75f16f;
-	font-size: 16px;
+	color: #9ef89a;
+	font-size: 18px;
 	padding-top: 15px;
 }
 
@@ -20,13 +20,18 @@ table {
 	table-layout: fixed;
 }
 
+::selection {
+	background: #ffa944;
+	color: #fff;
+}
+
 a {
 	color: white;
 	transition: .5s;
 }
 
 a:hover {
-	color: #2074ff;
+	color: #ffa944;
 	text-decoration: none;
 }
 
@@ -74,8 +79,8 @@ a:hover {
 }
 
 .navbar-default .navbar-nav>li>a:hover {
-	color: #75f16f;
-	border-color: #75f16f;
+	color: #ffa944;
+	border-color: #ffa944;
 }
 
 .navbar-toggle {
@@ -116,8 +121,8 @@ input.error, textarea.error, select.error {
 
 .btn-default:hover {
 	background: none;
-	border-color: #75f16f;
-	color: #75f16f;
+	border-color: #9ef89a;
+	color: #9ef89a;
 }
 
 .alert {
@@ -126,8 +131,8 @@ input.error, textarea.error, select.error {
 
 .alert-success {
 	background: none;
-	border-color: #75f16f;
-	color: #75f16f;
+	border-color: #9ef89a;
+	color: #9ef89a;
 }
 
 .red {
