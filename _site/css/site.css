@@ -181,3 +181,16 @@ footer {
 #page-nav .prev {
 	position: absolute;
 }
+
+.archive ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	margin-left: 5px;
+	font-size: 18px;
+}
+
+.archive ul li a {
+	padding: 5px;
+	display: block;
+}

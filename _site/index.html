@@ -62,66 +62,6 @@
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
         
 	<article>
-		<div class="header"><h1><a href="/2014/03/25/test4/">test post</a></h1></div>
-		<div class="content"><p>TEST</p>
-</div>
-	</article>
-
-
-    </article>
-    <hr>
-
-
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-        
-	<article>
-		<div class="header"><h1><a href="/2014/03/24/test3/">test post</a></h1></div>
-		<div class="content"><p>TEST</p>
-</div>
-	</article>
-
-
-    </article>
-    <hr>
-
-
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-        
-	<article>
-		<div class="header"><h1><a href="/2014/03/23/test2/">test post</a></h1></div>
-		<div class="content"><p>TEST</p>
-</div>
-	</article>
-
-
-    </article>
-    <hr>
-
-
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-        
-	<article>
-		<div class="header"><h1><a href="/2014/03/23/test/">test post</a></h1></div>
-		<div class="content"><p>TEST</p>
-</div>
-	</article>
-
-
-    </article>
-    <hr>
-
-
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-        
-	<article>
 		<div class="header"><h1><a href="/2013/12/10/television-for-cheap/">Television for Cheap</a></h1></div>
 		<div class="content"><p>
     I, like most, have been searching for a cheap way to watch all of the television I want for nearly a decade now.
@@ -192,11 +132,59 @@
     <hr>
 
 
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+        
+	<article>
+		<div class="header"><h1><a href="/2013/10/19/send-messages-between-controllers-angular/">Sending Messages Between Controllers in Angular.js</a></h1></div>
+		<div class="content"><p>
+	If you're building a web application in angular.js, chances are you will have to send a message between
+	one or more controllers. This is fairly simple to do through the use of services and callbacks.
+</p>
+
+<div class="highlight"><pre><code class="js"><span class="kd">var</span> <span class="nx">module</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;MyApp&quot;</span><span class="p">,</span> <span class="p">[]);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">service</span><span class="p">(</span><span class="s1">&#39;bridgeService&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">event</span><span class="p">;</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">send</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">message</span><span class="p">){</span>
+        <span class="nx">event</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+    <span class="p">};</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">onReceive</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">action</span><span class="p">){</span>
+        <span class="nx">event</span> <span class="o">=</span> <span class="nx">action</span><span class="p">;</span>
+    <span class="p">};</span>
+<span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;FooCtrl&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">bridgeService</span><span class="p">){</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">sendMessage</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">bridgeService</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;BarCtrl&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">bridgeService</span><span class="p">){</span>
+    <span class="nx">bridgeService</span><span class="p">.</span><span class="nx">onReceive</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">message</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p>
+	this is an overly simple example. You'll probably want to set up an events array so you can subscribe
+	more than one action at a time, but this should be enough to get you started.
+	Here is a <a href="http://jsfiddle.net/rwhitmire/Yfs7d/1/" target="_blank">jsfiddle example</a> if you need a little more context.
+</p></div>
+	</article>
+
+
+    </article>
+    <hr>
+
+
 </div>
 <nav id="page-nav">
     
-    
-        <a href="/blog/page2" class="next"> Next <i class="fa fa-arrow-circle-o-right"></i></a>
     
     <div class="text-center"><a href="/archive"><i class="fa fa-folder-o"></i> Blog Archive</a></div>
 </nav>
