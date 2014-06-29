@@ -62,7 +62,7 @@
 	one or more controllers. This is fairly simple to do through the use of services and callbacks.
 </p>
 
-<div class="highlight"><pre><code class="js"><span class="kd">var</span> <span class="nx">module</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;MyApp&quot;</span><span class="p">,</span> <span class="p">[]);</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">module</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;MyApp&quot;</span><span class="p">,</span> <span class="p">[]);</span>
 
 <span class="nx">module</span><span class="p">.</span><span class="nx">service</span><span class="p">(</span><span class="s1">&#39;bridgeService&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
     <span class="kd">var</span> <span class="nx">event</span><span class="p">;</span>
@@ -86,8 +86,7 @@
     <span class="nx">bridgeService</span><span class="p">.</span><span class="nx">onReceive</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">$scope</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">message</span><span class="p">;</span>
     <span class="p">});</span>
-<span class="p">});</span>
-</code></pre></div>
+<span class="p">});</span></code></pre></div>
 
 <p>
 	this is an overly simple example. You'll probably want to set up an events array so you can subscribe

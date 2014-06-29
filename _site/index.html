@@ -62,6 +62,113 @@
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
         
 	<article>
+		<div class="header"><h1><a href="/2014/06/29/entity-framework-basics/">Entity Framework Basics</a></h1></div>
+		<div class="content"><p>We recently had an incident in production at my place of employment where memory spikes were intermittently occuring
+in one of our .NET web applications. The problem was eventually tracked back to some Entity Framework code
+that had been written by a senior level developer. At first, I was shocked that this developer didn't understand the code
+he had written and why the code was problematic. However, certain abstractions within the Entity Framework make this particular
+issue very easy to overlook without a solid understanding of the library.</p>
+
+<h2>What this post isn't about</h2>
+
+<p>This post is not about showing you how to use Entity Framework or how to do "code first". This post is intended to help you
+understand what exactly is going on behind the scenes, and how to prevent the situation described in the previous paragraph.
+Most of the Entity Framework tutorials I've read mention nothing about the "magic" occuring as you write your fancy chained
+linq statements to pull data out of a database. This is information you must know if you are looking to solve problems with EF.</p>
+
+<h2>Materializing</h2>
+
+<p>When considering the performance of your application, materializing has to be your #1 concern when using EF. So what is materializing?
+I don't really know the official meaning of matrializing, but I think of it as <strong>transfering data into in-memory objects</strong>. That concept is
+extremely important when using EF, and here is why.</p>
+
+<p>Let's say we have the following service to get some data from our database:</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">ProductService</span> <span class="p">:</span> <span class="n">IProductService</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="n">IRepository</span><span class="p">&lt;</span><span class="n">Product</span><span class="p">&gt;</span> <span class="n">_repository</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nf">ProductService</span><span class="p">(</span><span class="n">IRepository</span><span class="p">&lt;</span><span class="n">Product</span><span class="p">&gt;</span> <span class="n">repository</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_repository</span> <span class="p">=</span> <span class="n">repository</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Product</span><span class="p">&gt;</span> <span class="n">GetAllProducts</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// assume the GetAll method returns an IQueryable</span>
+        <span class="k">return</span> <span class="n">_repository</span><span class="p">.</span><span class="n">GetAll</span><span class="p">().</span><span class="n">ToList</span><span class="p">();</span>
+    <span class="p">}</span> 
+<span class="p">}</span></code></pre></div>
+
+
+<p>And then we have the following action method to display that data in a view:</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">ProductsController</span> <span class="p">:</span> <span class="n">Controller</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="n">IProductService</span> <span class="n">_productService</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nf">ProductsController</span><span class="p">(</span><span class="n">IProductService</span> <span class="n">productService</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_productService</span> <span class="p">=</span> <span class="n">productService</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">ShowProducts</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">sortedProducts</span> <span class="p">=</span> <span class="n">_productService</span><span class="p">.</span><span class="n">GetAllProducts</span><span class="p">().</span><span class="n">OrderBy</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">OrderDate</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">sortedProducts</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>This is bad! If you know why this is bad, you can leave now - this post isn't meant for you. If you do not know why this
+is bad, stop writing Entity Framework code immediately and don't do any more until you fully understand the contents of this blog post.</p>
+
+<h2>IQueryable</h2>
+
+<p>When you write an Entity Framework query, you are more than likely using common LINQ statements to fetch your data. For example:</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">Product</span><span class="p">&gt;</span> <span class="n">GetNewProducts</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">newDate</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">AddDays</span><span class="p">(-</span><span class="m">10</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">products</span> <span class="p">=</span> <span class="n">_repository</span><span class="p">.</span><span class="n">GetAll</span><span class="p">().</span><span class="n">Where</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">CreatedDate</span> <span class="p">&gt;</span> <span class="n">newDate</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">products</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>If we debug this code and take a look at what's going on with that products collection, we see this:</p>
+
+<p><img src="/images/entity-framework-basics/query-example.png" alt="Query" /></p>
+
+<p>As you can see, our products haven't been queried yet. That LINQ statement is doing some magic to build a SQL
+query. Now look at what happens if I add a <code>.ToList()</code> to the end of that LINQ statement:</p>
+
+<p><img src="/images/entity-framework-basics/materialized.png" alt="Query" /></p>
+
+<p>The SQL transaction has now been executed and your list is in memory. For the sake of this demonsration, my
+product list is very small. However, a real-world production database could have millions or even billions of products
+with a strategically placed index on the CreatedDate property. You do not want your web server sorting and querying
+this data in memory. You want SQL server to do the work.</p>
+
+<h2>So I should never use .ToList() right?</h2>
+
+<p>Wrong. I would recommend using a <code>.ToList()</code> explicitly at some point to denote that you are now converting your
+query into an in-memory list. Even better, wrap the <code>.ToList()</code> method into an extension called something like <code>.Materialize()</code>.
+If your IQueryable ends up making it to the view, the view could end up doing all sorts of interesting things to materialize data.
+When writing EF code, please be mindful of what is going on behind the scenes. Understand and write self-documenting code to explain exactly
+where the query is executing. Doing this will prevent strange memory spikes from bogging down your software.</p>
+</div>
+	</article>
+
+
+    </article>
+    <hr>
+
+
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+        
+	<article>
 		<div class="header"><h1><a href="/2014/03/25/android-tablet-raspberry-pi/">Using an Android Tablet as a Raspberry Pi Monitor</a></h1></div>
 		<div class="content"><p>Over the past few months I've been addicted to the combined simplicity and awesomeness of the Raspberry Pi. When my mom got me one of these for Christmas, I thought it would be something that sat around and collected dust. However, I constantly find myself doing productive, fun things with the Pi. To date here is a list of things I've accomplished with my small $40 computer</p>
 
@@ -251,7 +358,7 @@ vncserver :0 -geometry 1280x800
 	one or more controllers. This is fairly simple to do through the use of services and callbacks.
 </p>
 
-<div class="highlight"><pre><code class="js"><span class="kd">var</span> <span class="nx">module</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;MyApp&quot;</span><span class="p">,</span> <span class="p">[]);</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">module</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;MyApp&quot;</span><span class="p">,</span> <span class="p">[]);</span>
 
 <span class="nx">module</span><span class="p">.</span><span class="nx">service</span><span class="p">(</span><span class="s1">&#39;bridgeService&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
     <span class="kd">var</span> <span class="nx">event</span><span class="p">;</span>
@@ -275,8 +382,7 @@ vncserver :0 -geometry 1280x800
     <span class="nx">bridgeService</span><span class="p">.</span><span class="nx">onReceive</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">$scope</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">message</span><span class="p">;</span>
     <span class="p">});</span>
-<span class="p">});</span>
-</code></pre></div>
+<span class="p">});</span></code></pre></div>
 
 <p>
 	this is an overly simple example. You'll probably want to set up an events array so you can subscribe
