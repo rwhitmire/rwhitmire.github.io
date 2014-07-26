@@ -62,6 +62,117 @@
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
         
 	<article>
+		<div class="header"><h1><a href="/2014/07/25/getting-started-with-require-js/">Getting Started With Require.js</a></h1></div>
+		<div class="content"><p>Require.js has been growing in popularity over the past few years, but can be rather intimidating
+for beginners. I don't know if this blog post will actually help anyone, but at the very least I'll have
+something to reference when I inevitably forget all of this useful information.</p>
+
+<p>I created a barebones demo application. If you just want to look at the
+code, go ahead and <a href="/downloads/requirejs-demo.zip">download</a> it. In fact, it might be easier if you
+download the project first and follow along.</p>
+
+<h2>Preface</h2>
+
+<p>With require.js, you'll never have to include ".js" file extensions to file paths. It knows you are loading javascript.</p>
+
+<h2>Config</h2>
+
+<p>You'll want to start with a config file. This is where you define commonly used modules. Here, I am
+loading jquery, bootstrap, and knockout. In addition, I am including a shim for bootstrap. I do this
+because the bootstrap.js library does not natively support AMD (asynchronous module definition). Therefore,
+I have to set jquery as a dependency for bootstrap.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">require</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">baseUrl</span><span class="o">:</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span>
+    <span class="nx">paths</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;jquery&quot;</span><span class="o">:</span> <span class="s2">&quot;bower_components/jquery/dist/jquery&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bootstrap&quot;</span><span class="o">:</span> <span class="s2">&quot;bower_components/bootstrap/dist/js/bootstrap&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;knockout&quot;</span><span class="o">:</span> <span class="s2">&quot;bower_components/knockout/dist/knockout&quot;</span>
+    <span class="p">},</span>
+    <span class="nx">shim</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;bootstrap&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="nx">deps</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;jquery&quot;</span><span class="p">]</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span></code></pre></div>
+
+
+<h2>Startup</h2>
+
+<p>You will have to pick a file to be the entry point of your application. I'm not very creative, so I call mine
+startup.js. Startup.js looks like this:</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;knockout&#39;</span><span class="p">,</span> <span class="s1">&#39;app/viewmodels/home&#39;</span><span class="p">,</span> <span class="s1">&#39;bootstrap&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ko</span><span class="p">,</span> <span class="nx">viewModel</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nx">ko</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="nx">viewModel</span><span class="p">);</span>
+
+<span class="p">});</span></code></pre></div>
+
+
+<p>This file is saying "I want knockout.js, home.js, and bootstrap.js - once all of those files are done loading,
+execute some function." If you don't know knockout.js, ko.applyBindings is simply telling my viewModel to bind
+itself to the DOM.</p>
+
+<p>Remember how we added a jquery dependency to bootstrap in our config file? Our startup.js will automatically
+load jQuery in addition to the other scripts because require is smart enough to know bootstrap requires jquery.</p>
+
+<h2>Define</h2>
+
+<p>Now, if we take a look at viewmodels/home.js, we can see another call to define that is loading the knockout module.
+The knockout module may have already been loaded by our startup.js, but we don't care. The beauty of require.js is that
+it allows each individual module to be dependent of any other. if knockout has already been loaded, we'll use it. If not,
+download the file from the server and load it.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;knockout&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ko</span><span class="p">){</span>
+
+    <span class="kd">function</span> <span class="nx">HomeViewModel</span><span class="p">(){</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="s2">&quot;hello world!&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">HomeViewModel</span><span class="p">;</span>
+
+<span class="p">});</span></code></pre></div>
+
+
+<h2>HTML</h2>
+
+<p>Our last step uses HTML to bring everything together.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content=</span><span class="s">&quot;IE=edge&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;&lt;/title&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h3</span> <span class="na">data-bind=</span><span class="s">&quot;text: message&quot;</span><span class="nt">&gt;&lt;/h3&gt;</span>
+
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;app/require.config.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">data-main=</span><span class="s">&quot;app/startup&quot;</span> <span class="na">src=</span><span class="s">&quot;bower_components/requirejs/require.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></div>
+
+
+<p>We're going to load our config file, and load require.js. An application using AMD should only ever have to include
+those two script files via HTML. Make sure you note <code>data-main="app/startup"</code>. It's important to point that attribute
+at the location of your startup file.</p>
+
+<h2>In Closing</h2>
+
+<p>This might qualify as the most complicated "Hello World" app I've ever written - but it scales!</p>
+</div>
+	</article>
+
+
+    </article>
+    <hr>
+
+
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+        
+	<article>
 		<div class="header"><h1><a href="/2014/06/29/entity-framework-basics/">Entity Framework Basics</a></h1></div>
 		<div class="content"><p>We recently had an incident in production at my place of employment where memory spikes were intermittently occuring
 in one of our .NET web applications. The problem was eventually tracked back to some Entity Framework code
