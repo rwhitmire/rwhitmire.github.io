@@ -10,7 +10,7 @@
     <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
 
-    <title>Blog Archive</title>
+    <title>Deleting Directories in Windows With Long Paths (NPM)</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -54,76 +54,34 @@
             </div><!--/.container-fluid -->
         </div>
         <div class="content">
-            <div class="archive">
-  
-  
-    
+            
+	<article>
+		<div class="header"><h1>Deleting Directories in Windows With Long Paths (NPM)</h1></div>
+		<div class="content"><p>I'm a huge fan of <a href="http://nodejs.org/">Node.js</a> and the <a href="https://www.npmjs.org/">Node Package Manager</a>. However, Windows noders have likely come across a rather annoying problem when trying to delete directories with heavily nested dependencies. You get a really ridiculous error message that looks something like this:</p>
 
+<p><img src="/images/deleting-directories-with-long-paths/long-path-error.png" alt="remove directory error" /></p>
 
-  
-  
-  <h2 class="year">2014</h2>
-  <ul>
+<p>Microsoft's <a href="http://answers.microsoft.com/en-us/windows/forum/windows_vista-files/the-source-file-names-are-larger-than-is-supported/438a20a7-a964-4325-b755-8b5d75ddd15b">best suggestion</a> seems to be to download some crappy software to help you out. I'm just not into that idea - and like any software developer, I set out to solve this problem with my own software. I created my first NPM package and named it wdr. That's short for Windows Directory Remover. It's not a brilliant name, but I was trying to aim for something I would remember. If you're also having this problem, do a <code>npm install -g wdr</code>, and then <code>wdr "C:\folder to delete"</code>.</p>
 
-  <li>
-    <a href="/2014/08/02/deleting-directories-with-long-paths/"><i class="fa fa-caret-right"></i> Deleting Directories in Windows With Long Paths (NPM)</a>
-  </li>
-  
-  
-  
-    
-
-
-  <li>
-    <a href="/2014/07/25/getting-started-with-require-js/"><i class="fa fa-caret-right"></i> Getting Started With Require.js</a>
-  </li>
-  
-  
-  
-    
-
-
-  <li>
-    <a href="/2014/06/29/entity-framework-basics/"><i class="fa fa-caret-right"></i> Entity Framework Basics</a>
-  </li>
-  
-  
-  
-    
-
-
-  <li>
-    <a href="/2014/03/25/android-tablet-raspberry-pi/"><i class="fa fa-caret-right"></i> Using an Android Tablet as a Raspberry Pi Monitor</a>
-  </li>
-  
-  
-  
-    
-
-
-  
-  
-    </ul>
-  
-  <h2 class="year">2013</h2>
-  <ul>
-
-  <li>
-    <a href="/2013/12/10/television-for-cheap/"><i class="fa fa-caret-right"></i> Television for Cheap</a>
-  </li>
-  
-  
-  
-    
-
-
-  <li>
-    <a href="/2013/10/19/send-messages-between-controllers-angular/"><i class="fa fa-caret-right"></i> Sending Messages Between Controllers in Angular.js</a>
-  </li>
-  
-  
-</ul>
+<p>I selfishly created this for my own convenience, but at least I'm sharing. Also, please don't give me any credit. I just wrapped my own package around another module named <a href="https://www.npmjs.org/package/rimraf">rimraf</a> - mostly because I would never remember that name.</p>
 </div>
+		<div class="comments"><div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'rwhitmire'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></div>
+	</article>
+
+
         </div>
         <footer>
             Copyright &copy; 2014 - Ryan Whitmire
