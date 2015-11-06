@@ -1,28 +1,32 @@
 ---
 layout: default
-title: Home
 ---
 
-{% assign index = true %}
-<div itemscope itemtype="http://schema.org/Blog">
-{% for post in paginator.posts %}
-{% unless post.redirect %}
-{% assign content = post.content %}
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-        {% include article.html %}
-    </article>
-    <hr>
-{% endunless %}
-{% endfor %}
+<div class="home">
+  <div class="about-me">
+    <p>
+      <img class="headshot" src="https://pbs.twimg.com/profile_images/484431101369143297/qwmnRG8Y_400x400.jpeg" alt="me and kiko the pug" height="84" width="84">
+      My name is Ryan Whitmire, and I work remotely as a software developer for <a href="http://www.velaro.com/">Velaro</a>.
+      I have a passion for programming languages and I'm constantly learning new ways to solve
+      old problems. As you can probably tell by the design of this website, I like to keep things simple.
+      As much as I enjoy writing code, I find deleting code is equally satisfying.
+    </p>
+    <p>
+      Building maintainable software is incredibly important to me. If the things we build break down and
+      wake us up in the middle of the night demanding to be fixed immediately, why did we
+      build them to begin with? This is no way to live! Write elegant code, acquire sleep.&trade;
+    </p>
+  </div>
+  <h1 class="page-heading">Blog Posts</h1>
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 </div>
-<nav id="page-nav">
-    {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' | replace: 'index.html', '' }}" class="prev"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
-    {% endif %}
-    {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="next"> Next <i class="fa fa-arrow-circle-o-right"></i></a>
-    {% endif %}
-    <div class="text-center"><a href="/archive"><i class="fa fa-folder-o"></i> Blog Archive</a></div>
-</nav>
-
-<hr>
