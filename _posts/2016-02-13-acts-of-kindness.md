@@ -65,7 +65,7 @@ who probably didn't deserve any help. She rolled down her window and began shout
 "WHAT WERE YOU THINKING YOU MORON, YOU DIDN'T EVEN USE YOUR TURN SIGNAL!"
 
 I wasn't expecting that. My face begins to twitch for some reason. Maybe because of the cold, maybe because of the unexpected rudeness, or
-maybe I was feeling angry. Tailgaters are a mennace to society afterall, and I don't appreciate being blamed for their wrecklessness.
+maybe I was feeling angry. Tailgaters are a mennace to society afterall, and I don't appreciate being blamed for their recklessness.
 Where I come from, if you tailgate someone and you end up in a ditch, you are responsible. Insurance companies
 and the state of Pennsylvania agree with me.
 
