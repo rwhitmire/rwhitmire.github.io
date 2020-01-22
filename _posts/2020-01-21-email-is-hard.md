@@ -4,7 +4,7 @@ title: Email is Hard
 ---
 
 Some things in the tech world should be simple but aren't. Email is one of those things.
-Formatting HTML in an email far more complicated than it should be. Every email client
+Formatting HTML in an email is far more complicated than it should be. Every email client
 behaves differently. Outlook uses an ancient version of Internet Explorer to render
 HTML and CSS. Inline styles and table layouts are a necessity, but writing code this way
 is a complete nightmare.
