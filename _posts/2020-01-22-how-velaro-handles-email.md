@@ -111,7 +111,7 @@ lovely C# code. Maybe we could hide it in a #region? OK, that was a bad joke. No
 programmer would ever do such a thing, right? Any updates we make to styling would have to be
 somehow copied over to the backend... Yuck.
 
-We needed something better, a way to define our variables and other template syntax within our
+We needed something better, a way to place our variables and other template syntax within our
 high level Foundation code. Unfortunately, the .NET ecosystem has very few good options for building
 HTML templates. Razor is the standard engine for building websites, but it has a mess of
 dependencies that make a bad option for simple `text + data = html` problems.
