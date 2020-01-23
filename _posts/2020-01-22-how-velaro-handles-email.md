@@ -121,7 +121,7 @@ but there's one remaining problem. Foundation also uses Handlebars. How do we pr
 attempting to render the variables too early?
 
 ```html
-<h3>
+{% raw %}<h3>
   <center>Agent Survey</center>
 </h3>
 <table class="survey-table">
@@ -139,7 +139,7 @@ attempting to render the variables too early?
     </tr>
     \{{/each}}
   </tbody>
-</table>
+</table>{% endraw %}
 ```
 
 We use the escape character! A simple backslash preserves the handlebars block which can then be
@@ -267,7 +267,7 @@ public void Render()
 The end result is clean and simple markup that we can fearlessly modify at any time with little effort:
 
 ```html
----
+{% raw %}---
 subject: Agent Survey
 ---
 
@@ -318,8 +318,7 @@ subject: Agent Survey
   <spacer size="30"></spacer>
 
   {{> social }}
-</container>
-
+</container>{% endraw %}
 ```
 
 Overall I'm pretty happy with this solution. At first, I was resistant to the idea of having to
