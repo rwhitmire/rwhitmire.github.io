@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import PostLayout from '../layouts/PostLayout.astro';
+
+export async function getStaticPaths() {
+  // Get all blog posts
+  const allPosts = await getCollection('blog');
+  
+  // Create paths for each post with Jekyll-style permalinks
+  return allPosts.map((post) => {
+    // Extract date from filename to avoid timezone issues
+    const filename = post.id;
+    const dateMatch = filename.match(/^(\d{4})-(\d{2})-(\d{2})-(.+)$/);
+    
+    if (!dateMatch) {
+      // Fallback to using the date object
+      const date = post.data.date;
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      const slug = filename.replace(/\.md$/, '');
+      const path = `${year}/${month}/${day}/${slug}`;
+      
+      return {
+        params: { slug: path },
+        props: { post },
+      };
+    }
+    
+    const [, year, month, day, slugPart] = dateMatch;
+    const slug = slugPart.replace(/\.md$/, '');
+    const path = `${year}/${month}/${day}/${slug}`;
+    
+    return {
+      params: { slug: path },
+      props: { post },
+    };
+  });
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<PostLayout title={post.data.title} date={post.data.date}>
+  <Content />
+</PostLayout>

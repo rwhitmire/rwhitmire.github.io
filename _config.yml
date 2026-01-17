@@ -1,7 +1,0 @@
-# Site settings
-title: thoughts |> html
-email: ryanw51@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-  Things about the life of software developer Ryan Whitmire.
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://rwhitmire.com" # the base hostname & protocol for your site
