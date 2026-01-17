@@ -30,7 +30,7 @@ pre code {
 
 /* Markdown content styles */
 .prose {
-  @apply max-w-3xl mx-auto;
+  @apply mx-auto;
 }
 
 .prose h1 {
