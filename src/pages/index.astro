@@ -1,62 +1,68 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
 
-const allPosts = await getCollection('blog');
+const allPosts = await getCollection("blog");
 const posts = allPosts
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .map(post => {
+  .map((post) => {
     // Extract date from filename to avoid timezone issues
     const filename = post.id;
     const dateMatch = filename.match(/^(\d{4})-(\d{2})-(\d{2})-(.+)$/);
-    
+
     let year, month, day, slug;
     if (dateMatch) {
       [, year, month, day, slug] = dateMatch;
-      slug = slug.replace(/\.md$/, '');
+      slug = slug.replace(/\.md$/, "");
     } else {
       // Fallback to using the date object
       const date = post.data.date;
       year = String(date.getFullYear());
-      month = String(date.getMonth() + 1).padStart(2, '0');
-      day = String(date.getDate()).padStart(2, '0');
-      slug = filename.replace(/\.md$/, '');
+      month = String(date.getMonth() + 1).padStart(2, "0");
+      day = String(date.getDate()).padStart(2, "0");
+      slug = filename.replace(/\.md$/, "");
     }
-    
+
     return {
       ...post,
       permalink: `/${year}/${month}/${day}/${slug}/`,
-      formattedDate: post.data.date.toLocaleDateString('en-US', { 
-        year: 'numeric', 
-        month: 'short', 
-        day: 'numeric' 
-      })
+      formattedDate: post.data.date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      }),
     };
   });
 ---
 
-<BaseLayout title="thoughts > html">
-  <div class="max-w-3xl mx-auto">
-    <div class="about-me mb-12 pb-8 border-b border-gray-200 dark:border-gray-700">
+<BaseLayout title="thoughts |> html">
+  <div class="max-w-4xl mx-auto">
+    <div
+      class="about-me mb-12 pb-8 border-b border-gray-200 dark:border-gray-700"
+    >
       <div class="flex items-start gap-6 mb-6">
-        <img 
-          class="headshot rounded-full flex-shrink-0" 
-          src="https://avatars2.githubusercontent.com/u/1261612?v=3&s=460" 
-          alt="Ryan Whitmire" 
-          height="84" 
+        <img
+          class="headshot rounded-full flex-shrink-0"
+          src="https://avatars2.githubusercontent.com/u/1261612?v=3&s=460"
+          alt="Ryan Whitmire"
+          height="84"
           width="84"
         />
         <div>
           <p class="mb-4 leading-relaxed">
-            My name is Ryan Whitmire, and I am the Chief Technology Officer at IRIS Tech, Inc.
-            I have a passion for programming languages and I'm constantly learning new ways to solve
-            old problems. As you can probably tell by the design of this website, I like to keep things simple.
-            As much as I enjoy writing code, I find deleting code is equally satisfying.
+            My name is Ryan Whitmire, and I am the Chief Technology Officer at
+            IRIS Tech, Inc. I have a passion for programming languages and I'm
+            constantly learning new ways to solve old problems. As you can
+            probably tell by the design of this website, I like to keep things
+            simple. As much as I enjoy writing code, I find deleting code is
+            equally satisfying.
           </p>
           <p class="leading-relaxed">
-            Building maintainable software is incredibly important to me. If the things we build break down and
-            wake us up in the middle of the night demanding to be fixed immediately, why did we
-            build them to begin with? This is no way to live! Write elegant code, acquire sleep.&trade;
+            Building maintainable software is incredibly important to me. If the
+            things we build break down and wake us up in the middle of the night
+            demanding to be fixed immediately, why did we build them to begin
+            with? This is no way to live! Write elegant code, acquire
+            sleep.&trade;
           </p>
         </div>
       </div>
@@ -64,24 +70,29 @@ const posts = allPosts
 
     <h1 class="text-3xl font-bold mb-8">Blog Posts</h1>
     <ul class="space-y-6">
-      {posts.map((post) => (
-        <li class="border-b border-gray-200 dark:border-gray-700 pb-6 last:border-0">
-          <span class="text-sm text-gray-600 dark:text-gray-400 block mb-2">
-            {post.formattedDate}
-          </span>
-          <h2 class="text-2xl font-semibold mb-2">
-            <a 
-              href={post.permalink}
-              class="text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            >
-              {post.data.title}
-            </a>
-          </h2>
-        </li>
-      ))}
+      {
+        posts.map((post) => (
+          <li class="border-b border-gray-200 dark:border-gray-700 pb-6 last:border-0">
+            <span class="text-sm text-gray-600 dark:text-gray-400 block mb-2">
+              {post.formattedDate}
+            </span>
+            <h2 class="text-2xl font-semibold mb-2">
+              <a
+                href={post.permalink}
+                class="text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >
+                {post.data.title}
+              </a>
+            </h2>
+          </li>
+        ))
+      }
     </ul>
     <p class="mt-8 text-gray-600 dark:text-gray-400">
-      subscribe <a href="/feed.xml" class="text-blue-600 dark:text-blue-400 hover:underline">via RSS</a>
+      subscribe <a
+        href="/feed.xml"
+        class="text-blue-600 dark:text-blue-400 hover:underline">via RSS</a
+      >
     </p>
   </div>
 </BaseLayout>

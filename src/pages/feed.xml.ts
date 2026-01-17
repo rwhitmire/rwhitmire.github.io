@@ -6,14 +6,14 @@ export async function GET(context: any) {
   const sortedPosts = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
   return rss({
-    title: 'thoughts > html',
+    title: 'thoughts |> html',
     description: 'Things about the life of software developer Ryan Whitmire.',
     site: context.site,
     items: sortedPosts.map((post) => {
       // Extract date from filename to avoid timezone issues
       const filename = post.id;
       const dateMatch = filename.match(/^(\d{4})-(\d{2})-(\d{2})-(.+)$/);
-      
+
       let year, month, day, slug;
       if (dateMatch) {
         [, year, month, day, slug] = dateMatch;
@@ -26,7 +26,7 @@ export async function GET(context: any) {
         day = String(date.getDate()).padStart(2, '0');
         slug = filename.replace(/\.md$/, '');
       }
-      
+
       return {
         title: post.data.title,
         pubDate: post.data.date,
